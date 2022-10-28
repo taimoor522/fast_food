@@ -1,9 +1,9 @@
-import 'package:code/Views/home_screen.dart';
+import 'package:code/Theme/theme.dart';
 import 'package:flutter/material.dart';
 
-import 'Theme/theme.dart';
+import 'Views/home_screen.dart';
 
-void main() {
+void main() async {
   runApp(const MyApp());
 }
 

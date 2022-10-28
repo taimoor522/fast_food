@@ -2,13 +2,32 @@ import 'package:code/Constants/assets.dart';
 import 'package:code/Views/product_detail_screen.dart';
 import 'package:code/data_source.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
   @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: [
+      SystemUiOverlay.top,
+    ]);
+    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+      statusBarColor: Colors.transparent,
+      statusBarIconBrightness: Brightness.dark,
+    ));
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -59,7 +78,6 @@ class HomeScreen extends StatelessWidget {
   }
 }
 
-
 class PopularProducts extends StatelessWidget {
   const PopularProducts({
     Key? key,
@@ -71,6 +89,7 @@ class PopularProducts extends StatelessWidget {
       height: 260,
       child: Flexible(
         child: ListView.builder(
+          clipBehavior: Clip.none,
           shrinkWrap: true,
           physics: const BouncingScrollPhysics(),
           itemCount: popularProducts.length,
@@ -195,6 +214,7 @@ class Categories extends StatelessWidget {
       height: 150,
       child: Flexible(
         child: ListView.builder(
+          clipBehavior: Clip.none,
           shrinkWrap: true,
           physics: const BouncingScrollPhysics(),
           scrollDirection: Axis.horizontal,
